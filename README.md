@@ -4,13 +4,13 @@
 INV main repository is [located here](https://github.com/peasoupio/inv).  
 
 ## How to use  
-1. Create an SCM file  
+1. Create a REPO file  
 1. Add this repository as its source  
 1. Define the `entry` option with the required INV files  
 
 Here's an example: 
 ```groovy
-scm {
+repo {
     name "inv-repo"
     src "https://github.com/peasoupio/inv-repo.git"
     entry '''
