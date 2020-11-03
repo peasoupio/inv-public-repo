@@ -1,0 +1,11 @@
+repo:
+  - name: io.peasoup.public.tools.maven
+    path: tools/maven
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+          git clone ${src} .
+
+      pull: |
+          git pull

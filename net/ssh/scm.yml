@@ -1,0 +1,11 @@
+repo:
+  - name: io.peasoup.public.net.ssh
+    path: net/ssh
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+          git clone ${src} .
+
+      pull: |
+          git pull

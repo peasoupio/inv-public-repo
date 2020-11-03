@@ -4,26 +4,9 @@
 INV main repository is [located here](https://github.com/peasoupio/inv).  
 
 ## How to use  
-1. Create a REPO file  
-1. Add this repository as its source  
-1. Define the `entry` option with the required INV files  
-
-Here's an example: 
-```groovy
-repo {
-    name "inv-repo"
-    src "https://github.com/peasoupio/inv-repo.git"
-    entry '''
-io/files
-net/http
-net/ssh
-tools/maven
-'''
-
-    init "git clone ${src} ."
-}
-```
-
+Use INV Repo command.  
+Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-repo/master/net/http/scm.groovy`  
+  
 ## Available entries
 ```
 io/
@@ -41,14 +24,35 @@ Here's a scemantic representation of the targeted file structure:
 ```
 {physical device}/
     {protocol or structure}/
-        inv.groovy
+        src/
+            // Groovy class files, p.e "MyClass.groovy"
+        test/
+            // Groovy test class files, p.e "MyTest.groovy"
+        vars/
+            // INV files, p.e "inv.groovy"
         resources/
-        testResources/
+            main/
+                // Any type of files
+            test/
+                // Any type of test files
+        
+        scm.groovy (or .yml, .yaml)
+          
 tools/
     {tool's name}/
-        inv.groovy
+        src/
+            // Groovy class files, p.e "MyClass.groovy"
+        test/
+            // Groovy test class files, p.e "MyTest.groovy"
+        vars/
+            // INV files, p.e "inv.groovy"
         resources/
-        testResources/
+            main/
+                // Any type of files
+            test/
+                // Any type of test files
+        
+        scm.groovy (or .yml, .yaml)
 ```
 > `.groovy` and `.yaml` are both supported
 
