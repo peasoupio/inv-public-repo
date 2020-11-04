@@ -5,7 +5,7 @@ INV main repository is [located here](https://github.com/peasoupio/inv).
 
 ## How to use  
 Use INV Repo command.  
-Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-repo/master/net/http/scm.groovy`  
+Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-repo/master/net/http/repo.yml`  
   
 ## Available entries
 ```
