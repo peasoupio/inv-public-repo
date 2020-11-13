@@ -11,7 +11,7 @@ void mavenSimpleLookup() {
                 path app1
 
                 // Using default
-                require $inv.Maven into '$maven'
+                require { Maven } into '$maven'
 
                 step {
                     assert $maven.poms
@@ -20,7 +20,7 @@ void mavenSimpleLookup() {
             {
                 name "app2"
 
-                require $inv.Maven using {
+                require { Maven } using {
 
                     // Disabling defaults and calling manually
                     defaults false

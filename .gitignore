@@ -1,2 +1,3 @@
-/inv-repo.iml
+*.iml
+.idea
 **/.runs/

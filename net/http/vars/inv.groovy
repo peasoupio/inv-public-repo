@@ -3,7 +3,7 @@ inv {
 Provide easy-to-use HTTP request methods.
 '''
 
-    broadcast $inv.HTTP using {
+    broadcast { HTTP } using {
         markdown '''
 Returns a new RequestHandler.  
 Methods:

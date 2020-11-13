@@ -10,7 +10,7 @@ Provide a wrapper to Hidetake groovy-ssh implementation.
 It creates a new service per callee.
 '''
 
-    broadcast $inv.SSH using {
+    broadcast { SSH } using {
         markdown '''
 Returns a new SSH handler.  
 

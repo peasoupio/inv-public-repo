@@ -1,11 +1,11 @@
-# ![TiteCan](https://github.com/peasoupio/inv/blob/master/src/main/resources/public/favicon-32x32.png) INV Repository - Public Intertwined network valuables artefacts
+# ![TiteCan](https://github.com/peasoupio/inv/blob/master/core/src/main/resources/public/favicon-32x32.png) INV Repository - Public Intertwined network valuables artefacts
 
 **inv-repo** is a public repository for public artefacts used with INV.  
 INV main repository is [located here](https://github.com/peasoupio/inv).  
 
 ## How to use  
 Use INV Repo command.  
-Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-repo/master/net/http/repo.yml`  
+Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/net/http/repo.yml`  
   
 ## Available entries
 ```

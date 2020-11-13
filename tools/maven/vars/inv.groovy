@@ -9,9 +9,9 @@ Provide a Maven reader that scan the callee current location for 'pom.xml' files
 It also analyzes the artifacts and the dependencies to generate broadcasts (artifacts) and requires (dependencies).
 '''
 
-    require $inv.Files into '$files'
+    require { Files } into '$files'
 
-    broadcast $inv.Maven using {
+    broadcast { Maven } using {
         markdown '''
 Returns a new Maven instance.  
 
@@ -48,14 +48,14 @@ Exposes:
                         MavenXpp3Reader reader = new MavenXpp3Reader()
                         Model model = reader.read(new FileReader(file))
 
-                        broadcast $inv.Artifact using {
+                        broadcast { Artifact } using {
                             id model.groupId + ":" + model.artifactId
 
                             ready { [model: model] }
                         }
 
                         for(Dependency dep : model.dependencies) {
-                            require $inv.Artifact(dep.groupId + ":" + dep.artifactId)
+                            require { Artifact(dep.groupId + ":" + dep.artifactId) }
                         }
 
                         poms << model
