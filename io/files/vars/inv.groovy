@@ -8,7 +8,7 @@ Files (I/O) general tool.
 it is more performant than FileNameFinder provided by groovy itself.
 '''
 
-    broadcast $inv.Files using {
+    broadcast { Files } using {
         markdown '''
 A default implementation for files interactions.    
 

@@ -3,7 +3,7 @@ void get() {
     simulate(
             "inv.groovy",
             {
-                require $inv.HTTP into '$http'
+                require { HTTP } into '$http'
 
                 step {
                     assert $http.newRequest("https://google.com")
@@ -20,7 +20,7 @@ void post() {
     simulate(
             "inv.groovy",
             {
-                require $inv.HTTP into '$http'
+                require { HTTP } into '$http'
 
                 step {
 
