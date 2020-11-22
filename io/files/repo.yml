@@ -1,5 +1,5 @@
 repo:
-  - name: io.peasoup.public.io.files
+  - name: io.peasoup.inv.pub.io.files
     path: io/files
     src: https://github.com/peasoupio/inv-repo.git
 
