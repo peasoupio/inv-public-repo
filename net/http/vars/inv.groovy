@@ -12,7 +12,7 @@ Methods:
     $http.newSimpleRequest: Create a simple request.
 ```
 '''
-        ready { return new RequestHandler() }
+        ready { new RequestHandler() }
     }
 }
 

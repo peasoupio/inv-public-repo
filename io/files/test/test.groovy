@@ -1,21 +1,27 @@
+@groovy.transform.BaseScript(io.peasoup.inv.testing.JunitScriptBase.class)
+import org.junit.Test
+
+import static org.junit.Assert.*
+
+
 @Test
 void glob() {
 
-    def files = new File("testResources/files").absolutePath
+    def files = new File("resources/test/files").absolutePath
     def testResults = []
 
-    simulate(
-            "inv.groovy",
-            {
-                require { Files } into '$files'
+    simulate {
+        addInvFile "vars/inv.groovy"
+        addInvBody {
+            require { Files } into '$files'
 
-                step {
-                    $files.glob(files).each { testResults << new File(it).name + "-GLOB-ALL" }
-                    $files.glob(files, "*file*").each { testResults << new File(it).name + "-GLOB-PATTERN" }
-                    $files.glob(files, "*file*", "*file2*").each { testResults << new File(it).name + "-GLOB-EXCLUDE" }
-                }
+            step {
+                $files.glob(files).each { testResults << new File(it).name + "-GLOB-ALL" }
+                $files.glob(files, "*file*").each { testResults << new File(it).name + "-GLOB-PATTERN" }
+                $files.glob(files, "*file*", "*file2*").each { testResults << new File(it).name + "-GLOB-EXCLUDE" }
             }
-    )
+        }
+    }
     assertTrue isOk
 
     // GLOB All
@@ -34,21 +40,22 @@ void glob() {
 @Test
 void find() {
 
-    def files = new File("testResources/files").absolutePath
+    def files = new File("resources/test/files").absolutePath
     def testResults = []
 
-    simulate(
-            "inv.groovy",
-            {
-                require { Files } into '$files'
+    simulate {
+        addInvFile "vars/inv.groovy"
+        addInvBody {
+            require { Files } into '$files'
 
-                step {
-                    $files.find(files as String).each { testResults << it.name + "-FIND-ALL" }
-                    $files.find(files, "file").each { testResults << it.name + "-FIND-PATTERN" }
-                    $files.find(files, "file", "file2").each { testResults << it.name + "-FIND-EXCLUDE" }
-                }
+            step {
+                $files.find(files as String).each { testResults << it.name + "-FIND-ALL" }
+                $files.find(files, "file").each { testResults << it.name + "-FIND-PATTERN" }
+                $files.find(files, "file", "file2").each { testResults << it.name + "-FIND-EXCLUDE" }
             }
-    )
+        }
+    }
+
     assertTrue isOk
 
     // Find All

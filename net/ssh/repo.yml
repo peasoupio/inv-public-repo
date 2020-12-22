@@ -1,5 +1,5 @@
 repo:
-  - name: io.peasoup.public.net.ssh
+  - name: io.peasoup.inv.pub.net.ssh
     path: net/ssh
     src: https://github.com/peasoupio/inv-repo.git
 

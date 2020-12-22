@@ -1,35 +1,43 @@
+@groovy.transform.BaseScript(io.peasoup.inv.testing.JunitScriptBase.class)
+import org.junit.Test
+
+import static org.junit.Assert.*
+
 @Test
 void mavenSimpleLookup() {
-    def app1 = new File("./testResources/SimpleMavenLookup/app1").absolutePath
-    def app2 = new File("./testResources/SimpleMavenLookup/app2").absolutePath
+    def app1 = new File("./resources/test/SimpleMavenLookup/app1").absolutePath
+    def app2 = new File("./resources/test/SimpleMavenLookup/app2").absolutePath
 
-    simulate(
-            "inv.groovy",
-            "../../io/files/inv.groovy",
-            {
-                name "app1"
-                path app1
+    simulate {
+        addRepoFile "../../io/files"
+        addInvFile "vars/inv.groovy"
 
-                // Using default
-                require { Maven } into '$maven'
+        addInvBody {
+            name "app1"
+            path app1
 
-                step {
-                    assert $maven.poms
-                }
-            },
-            {
-                name "app2"
+            // Using default
+            require { Maven } into '$maven'
 
-                require { Maven } using {
+            step {
+                assert $maven.poms
+            }
+        }
 
-                    // Disabling defaults and calling manually
-                    defaults false
+        addInvBody {
+            name "app2"
+            path app2
 
-                    resolved {
-                        response.analyze(app2)
-                    }
+            require { Maven } using {
+
+                // Disabling defaults and calling manually
+                defaults false
+
+                resolved {
+                    response.analyze(app2)
                 }
             }
-    )
+        }
+    }
     assertTrue isOk
 }
