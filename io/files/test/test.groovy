@@ -1,3 +1,9 @@
+@groovy.transform.BaseScript(io.peasoup.inv.testing.JunitScriptBase.class)
+import org.junit.Test
+
+import static org.junit.Assert.*
+
+
 @Test
 void glob() {
 

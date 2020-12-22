@@ -1,3 +1,8 @@
+@groovy.transform.BaseScript(io.peasoup.inv.testing.JunitScriptBase.class)
+import org.junit.Test
+
+import static org.junit.Assert.*
+
 @Test
 void mavenSimpleLookup() {
     def app1 = new File("./resources/test/SimpleMavenLookup/app1").absolutePath

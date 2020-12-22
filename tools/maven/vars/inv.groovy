@@ -3,6 +3,8 @@ import org.apache.maven.model.Dependency
 import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 
+get "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
+
 inv {
     markdown '''
 Provide a Maven reader that scan the callee current location for 'pom.xml' files.  
