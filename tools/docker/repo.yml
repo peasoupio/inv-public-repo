@@ -1,0 +1,11 @@
+repo:
+  - name: io.peasoup.inv.pub.tools.docker
+    path: tools/docker
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+        git clone ${src} .
+
+      pull: |
+        git pull

@@ -1,0 +1,11 @@
+repo:
+  - name: io.peasoup.inv.pub.os.exec
+    path: os/exec
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+          git clone ${src} .
+
+      pull: |
+          git pull
