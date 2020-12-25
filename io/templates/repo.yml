@@ -1,0 +1,11 @@
+repo:
+  - name: io.peasoup.inv.pub.io.templates
+    path: io/templates
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+          git clone ${src} .
+
+      pull: |
+          git pull
