@@ -13,7 +13,7 @@ void glob() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { Files } into '$files'
+            require { Files }
 
             step {
                 $files.glob(files).each { testResults << new File(it).name + "-GLOB-ALL" }
@@ -46,7 +46,7 @@ void find() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { Files } into '$files'
+            require { Files }
 
             step {
                 $files.find(files as String).each { testResults << it.name + "-FIND-ALL" }

@@ -7,11 +7,9 @@ import org.apache.commons.text.StringEscapeUtils
 class MustacheHelper {
     private final MustacheFactory mf = new DefaultMustacheFactory()
 
-    private final Object $files
     private final Closure console
 
-    MustacheHelper(Object $files, Closure console) {
-        this.$files = $files
+    MustacheHelper(Closure console) {
         this.console = console
     }
 

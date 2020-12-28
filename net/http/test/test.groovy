@@ -8,7 +8,7 @@ void get() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { HTTP } into '$http'
+            require { HTTP }
 
             step {
                 assert $http.newRequest("https://google.com")
@@ -26,7 +26,7 @@ void post() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { HTTP } into '$http'
+            require { HTTP }
 
             step {
 

@@ -16,7 +16,7 @@ void mavenSimpleLookup() {
             path app1
 
             // Using default
-            require { Maven } into '$maven'
+            require { Maven }
 
             step {
                 assert $maven.poms
