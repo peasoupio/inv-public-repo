@@ -1,4 +1,4 @@
-get "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
+load "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
 
 inv {
     name "mustacheTemplate"
