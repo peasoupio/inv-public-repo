@@ -3,7 +3,7 @@ import org.apache.maven.model.Dependency
 import org.apache.maven.model.Model
 import org.apache.maven.model.io.xpp3.MavenXpp3Reader
 
-get "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
+load "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
 
 inv {
     markdown '''
@@ -11,7 +11,7 @@ Provide a Maven reader that scan the callee current location for 'pom.xml' files
 It also analyzes the artifacts and the dependencies to generate broadcasts (artifacts) and requires (dependencies).
 '''
 
-    require { Files } into '$files'
+    require { Files }
 
     broadcast { Maven } using {
         markdown '''
@@ -24,52 +24,6 @@ Exposes:
 ```
 '''
 
-
-        ready {
-            def instance = [:]
-            instance << [
-                $: {
-                    def analyse = instance.analyze as Closure
-                    def copy = analyse
-                            .dehydrate()
-                            .rehydrate(
-                                    delegate,
-                                    analyse.owner,
-                                    analyse.thisObject)
-                    copy.resolveStrategy = Closure.DELEGATE_FIRST
-
-                    return copy(path) // using default path of Inv
-                },
-                analyze: { String pwd, String exclude = "" ->
-
-                    def poms = []
-
-                    // Using find makes it faster
-                    for(File file : $files.find(pwd, "pom.xml", exclude)) {
-
-                        MavenXpp3Reader reader = new MavenXpp3Reader()
-                        Model model = reader.read(new FileReader(file))
-
-                        broadcast { Artifact } using {
-                            id model.groupId + ":" + model.artifactId
-
-                            ready { [model: model] }
-                        }
-
-                        for(Dependency dep : model.dependencies) {
-                            require { Artifact(dep.groupId + ":" + dep.artifactId) }
-                        }
-
-                        poms << model
-                    }
-
-                    return [
-                        poms: poms
-                    ]
-                }
-            ]
-
-            return instance
-        }
+        ready { new SimpleMavenHandler(files: $files as $Files) }
     }
 }

@@ -1,0 +1,2 @@
+My {{value}} is printed.
+This {{one}} is not.

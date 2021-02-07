@@ -8,10 +8,10 @@ void get() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { HTTP } into '$http'
+            require { HTTP }
 
             step {
-                assert $http.newRequest("https://google.com")
+                assert $hTTP.newRequest("https://google.com")
                         .send()
                         .valid()
             }
@@ -26,13 +26,13 @@ void post() {
     simulate {
         addInvFile "vars/inv.groovy"
         addInvBody {
-            require { HTTP } into '$http'
+            require { HTTP }
 
             step {
 
                 def data = "My super duper hyper mega data"
 
-                def req = $http.newRequest("https://postman-echo.com/post")
+                def req = $hTTP.newRequest("https://postman-echo.com/post")
                         .method("POST")
                         .parameter("value1", data)
                         .send()

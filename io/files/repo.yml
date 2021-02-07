@@ -5,7 +5,8 @@ repo:
 
     hooks:
       init: |
-          git clone ${src} .
+        git clone --depth 1 --no-checkout ${src} .
+        git checkout master -- ${path}
 
       pull: |
-          git pull
+        git pull

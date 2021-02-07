@@ -9,7 +9,6 @@ void mavenSimpleLookup() {
     def app2 = new File("./resources/test/SimpleMavenLookup/app2").absolutePath
 
     simulate {
-        addRepoFile "../../io/files"
         addInvFile "vars/inv.groovy"
 
         addInvBody {
@@ -17,7 +16,7 @@ void mavenSimpleLookup() {
             path app1
 
             // Using default
-            require { Maven } into '$maven'
+            require { Maven }
 
             step {
                 assert $maven.poms

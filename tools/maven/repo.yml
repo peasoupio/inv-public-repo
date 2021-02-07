@@ -1,6 +1,6 @@
 repo:
-  - name: io.peasoup.inv.pub.tools.maven
-    path: tools/maven
+  - name: io.peasoup.inv.pub.io.files
+    path: io/files
     src: https://github.com/peasoupio/inv-repo.git
 
     hooks:
