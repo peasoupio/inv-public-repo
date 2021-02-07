@@ -1,11 +1,12 @@
 repo:
-  - name: io.peasoup.inv.pub.io.files
-    path: io/files
+  - name: io.peasoup.inv.pub.tools.maven
+    path: tools/maven
     src: https://github.com/peasoupio/inv-repo.git
 
     hooks:
       init: |
-          git clone ${src} .
+        git clone --depth 1 --no-checkout ${src} .
+        git checkout master -- ${path}
 
       pull: |
-          git pull
+        git pull
