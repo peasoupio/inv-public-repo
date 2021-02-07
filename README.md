@@ -7,15 +7,19 @@ INV main repository is [located here](https://github.com/peasoupio/inv).
 Use INV Repo command.  
 Per example: `inv repo get -r https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/net/http/repo.yml`  
   
-## Available entries
+## Available implementations
 ```
 io/
-    files/   # Filesystem I/O
+    files/
 net/
     http/     
-    ssh/    
+    ssh/  
+os/
+    exec/  
 tools/
     maven/
+    docker/
+    kubernetes/
     
 ```
 
