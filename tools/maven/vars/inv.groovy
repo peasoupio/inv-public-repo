@@ -1,6 +1,3 @@
-@Grab("org.apache.maven:maven-model:3.0.2")
-_
-
 load "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/files/repo.yml"
 
 inv {
