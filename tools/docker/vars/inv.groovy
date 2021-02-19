@@ -1,5 +1,4 @@
-
-load "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/os/exec/repo.yml"
+repo "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/os/exec/repo.yml"
 
 inv {
 

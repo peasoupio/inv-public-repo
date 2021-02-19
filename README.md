@@ -11,10 +11,10 @@ The reference has to be reachable with the HTTP(s) protocol.
 An example for the file `.../hrefs/public.net.http.href`:
 `https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/net/http/repo.yml`
 
-### With a `load` statement:
-A `load` statement can be found in a `INV` file.   
+### With a `repo` statement:
+A `repo` statement can be found in a `INV` file.   
 An example:  
-`load "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/net/http/repo.yml"`
+`repo "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/net/http/repo.yml"`
 >**IMPORTANT**: It creates a strong relationship with this repository.
 
 ### With a CLI command:
