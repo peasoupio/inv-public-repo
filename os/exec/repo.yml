@@ -9,4 +9,5 @@ repo:
         git checkout master -- ${path}
 
       pull: |
+        git reset --hard
         git pull
