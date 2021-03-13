@@ -1,12 +1,5 @@
 class OSInfo {
 
-    /**
-     * types of Operating Systems
-     */
-    enum OSType {
-        Windows, MacOS, Linux, Other
-    }
-
     private OSType detectedOS
 
     OSInfo() {
