@@ -1,14 +1,11 @@
-import org.apache.ivy.osgi.filter.OSGiFilter
-
 class OSInfo {
 
     /**
      * types of Operating Systems
      */
-    private enum OSType {
+    enum OSType {
         Windows, MacOS, Linux, Other
-    };
-
+    }
 
     private OSType detectedOS
 
