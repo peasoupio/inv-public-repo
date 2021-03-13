@@ -1,0 +1,13 @@
+repo:
+  - name: io.peasoup.inv.pub.os.info
+    path: os/info
+    src: https://github.com/peasoupio/inv-repo.git
+
+    hooks:
+      init: |
+        git clone --depth 1 --no-checkout ${src} .
+        git checkout master -- ${path}
+
+      pull: |
+        git reset --hard
+        git pull
