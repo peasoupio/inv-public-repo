@@ -12,6 +12,7 @@ def app2 = new File("./resources/test/SimpleMavenLookup/app2").absolutePath
 
 @Test
 void mavenSimpleLookup() {
+
     simulate {
         addInvFile "vars/inv.groovy"
 
