@@ -7,7 +7,7 @@ class SimpleMavenHandler {
     $Files files
 
     Map $default() {
-        this.analyze(getPath())
+        this.analyze(caller.getPath())
     }
 
     Map analyze(String pwd, String exclude = "") {
@@ -20,14 +20,14 @@ class SimpleMavenHandler {
             MavenXpp3Reader reader = new MavenXpp3Reader()
             Model model = reader.read(new FileReader(file))
 
-            broadcast { Artifact } using {
+            caller.broadcast { Artifact } using {
                 id model.groupId + ":" + model.artifactId
 
                 ready { [model: model] }
             }
 
             for (Dependency dep : model.dependencies) {
-                require { Artifact(dep.groupId + ":" + dep.artifactId) }
+                caller.require { Artifact(dep.groupId + ":" + dep.artifactId) }
             }
 
             poms << model
