@@ -36,9 +36,15 @@ class ExecOptions {
         if (fireAndForget)
             return null
 
-        StringBuilder output =  new StringBuilder()
 
-        def execOutput = new ExecOutput(output: output)
+        ExecOutput execOutput
+
+        if (returnStdout) {
+            StringBuilder output =  new StringBuilder()
+            execOutput = new ExecOutput(output: output)
+        } else {
+            execOutput = new ExecOutput()
+        }
 
         if (timeoutMs == 0)
             proc.waitForProcessOutput(execOutput, errOutput)
@@ -55,7 +61,7 @@ class ExecOptions {
             return exitValue
 
         if (returnStdout)
-            return output.toString()?.trim()
+            return execOutput.output.toString()?.trim()
 
         // If a non-zero exit value is provided, return false
         if (exitValue != 0)
