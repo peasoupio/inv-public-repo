@@ -14,7 +14,7 @@ void test_simple_ok() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertTrue execHandler.simple("ping 127.0.0.1")
@@ -38,7 +38,7 @@ void test_simple_fail() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertFalse execHandler.simple("ping 999.999.999.999")
@@ -63,7 +63,7 @@ void test_params_command_ok() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertTrue execHandler.params(command: "ping 127.0.0.1")
@@ -86,7 +86,7 @@ void test_params_command_fail() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertFalse execHandler.params(command: "ping 999.999.999.999")
@@ -110,7 +110,7 @@ void test_params_basedir() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     def here = new File("").absoluteFile.name
@@ -142,7 +142,7 @@ void test_params_returnStdOut() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertNotNull execHandler.params(command: "ping 127.0.0.1", returnStdout: true)
@@ -166,7 +166,7 @@ void test_params_returnValue() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertEquals 0, execHandler.params(command: "ping 127.0.0.1", returnStatus: true)
@@ -190,7 +190,7 @@ void test_params_timeoutMs() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     assertFalse execHandler.params(command: "sleep 5", timeoutMs: 1000) // 1 second timeout
@@ -214,7 +214,7 @@ void test_params_includeSystemProperties() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     // Will not find "set" program
@@ -239,7 +239,7 @@ void test_params_fireAndForget() {
             // Using default
             require { Exec } using {
                 resolved {
-                    def execHandler = response as $ExecHandler
+                    def execHandler = response
                     assertNotNull(execHandler)
 
                     // Always null since we can't inspect actual comand results
@@ -251,28 +251,4 @@ void test_params_fireAndForget() {
     }
 
     assertTrue isOk
-}
-
-
-
-
-interface  $ExecHandler {
-    Boolean simple(String command)
-
-    /**
-     * Execute a process using a set of options.
-     * Available options:
-     * - String command
-     * - String basedir = "."
-     * - boolean returnStdout = false
-     * - boolean returnStatus = false
-     * - int timeoutMs = DEFAULT_TIMEOUT_MS
-     * - List vars = []
-     * - boolean includeSystemProperties = false
-     * - boolean fireAndForget = false
-
-     * @param opts
-     * @return
-     */
-    Object params(Map opts)
 }

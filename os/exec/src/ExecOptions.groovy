@@ -1,10 +1,7 @@
 class ExecOptions {
 
-    private final static int DEFAULT_TIMEOUT_MS = 1000 * 60 * 5 // 5 mins
-
     private final systemVars = System.getenv().collect { k, v -> "$k=$v" }
     private final ExecOutput errOutput = new ExecOutput()
-    private final ExecOutput infoOutput = new ExecOutput()
 
     String command
     String basedir = "."
@@ -18,8 +15,6 @@ class ExecOptions {
     Object execute() {
         if (!command)
             throw new IllegalArgumentException("commands")
-
-        infoOutput.append "[EXEC] [CALL] ${basedir}/${command}"
 
         List processVars = vars
 
@@ -36,14 +31,13 @@ class ExecOptions {
         if (fireAndForget)
             return null
 
-
         ExecOutput execOutput
 
         if (returnStdout) {
             StringBuilder output =  new StringBuilder()
             execOutput = new ExecOutput(output: output)
         } else {
-            execOutput = new ExecOutput()
+            execOutput = new ExecOutput(print: false)
         }
 
         if (timeoutMs == 0)
@@ -52,10 +46,6 @@ class ExecOptions {
             proc.waitForOrKill(timeoutMs)
 
         def exitValue = proc.exitValue()
-
-        // If a non-zero exit value is provided, log
-        if (exitValue != 0)
-            infoOutput.append "[EXEC] Return value: ${exitValue}"
 
         if (returnStatus)
             return exitValue
