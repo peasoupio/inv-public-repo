@@ -1,7 +1,7 @@
 class ExecOptions {
 
-    private final systemVars = System.getenv().collect { k, v -> "$k=$v" }
-    private final ExecOutput errOutput = new ExecOutput()
+    private final static List SYSTEM_VARIABLES = System.getenv().collect { k, v -> "$k=$v" }
+    private final static ExecOutput ERROR_OUTPUT = new ExecOutput()
 
     String command
     String basedir = "."
@@ -19,7 +19,7 @@ class ExecOptions {
         List processVars = vars
 
         if (includeSystemProperties)
-            processVars += systemVars
+            processVars += SYSTEM_VARIABLES
 
         Process proc
 
@@ -33,6 +33,8 @@ class ExecOptions {
 
         ExecOutput execOutput
 
+        // If returnStdout enabled, capture output (and print it)
+        // Otherwise, don't print it
         if (returnStdout) {
             StringBuilder output =  new StringBuilder()
             execOutput = new ExecOutput(output: output)
@@ -40,11 +42,17 @@ class ExecOptions {
             execOutput = new ExecOutput(print: false)
         }
 
+        // Print command
+        execOutput.append(">>>>" + command)
+
+        // If timeout is defined, wait for it.
+        // Otherwise, wait until output is done.
         if (timeoutMs == 0)
-            proc.waitForProcessOutput(execOutput, errOutput)
+            proc.waitForProcessOutput(execOutput, ERROR_OUTPUT)
         else
             proc.waitForOrKill(timeoutMs)
 
+        // Get process exitValue
         def exitValue = proc.exitValue()
 
         if (returnStatus)

@@ -1,12 +1,15 @@
+repo "https://raw.githubusercontent.com/peasoupio/inv-public-repo/master/io/logger/repo.yml"
 
 inv {
-    name "exec"
+    name "os.exec"
+
+    require { Logger }
 
     broadcast { Exec } using {
         ready {
 
             // Set de debug closure as the output console method
-            ExecOutput.console = { String msg -> debug(msg) }
+            ExecOutput.logger = $logger as $Logger
 
             return new ExecHandler()
         }

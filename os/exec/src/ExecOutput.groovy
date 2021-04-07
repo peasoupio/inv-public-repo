@@ -1,6 +1,6 @@
 class ExecOutput implements Appendable {
 
-    static Closure console
+    static $Logger logger
 
     StringBuilder output
     boolean print = true
@@ -12,26 +12,17 @@ class ExecOutput implements Appendable {
 
         if (print)
             if (!charSequence.equals("\n") && charSequence.length() > 0)
-                console.call(charSequence)
+                logger.info(charSequence.toString())
     }
 
     @Override
     Appendable append(CharSequence charSequence, int i, int i1) throws IOException {
-        if (output != null)
-            output.append(charSequence, i, i1)
-
-        if (print)
-            if (!charSequence.equals("\n") && charSequence.length() > 0)
-                console.call(charSequence.subSequence(i, i1))
+        throw new IllegalStateException("Not implemented")
     }
 
     @Override
     Appendable append(char c) throws IOException {
-        if (output != null)
-            output.append(c)
-
-        if (print)
-            console.call(c)
+        throw new IllegalStateException("Not implemented")
 
     }
 }
