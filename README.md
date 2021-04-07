@@ -26,11 +26,14 @@ An example:
 ```
 io/
     files/
+    templates/
+    logger/
 net/
     http/     
     ssh/  
 os/
     exec/  
+    info/
 tools/
     maven/
     docker/
