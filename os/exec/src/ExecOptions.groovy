@@ -43,7 +43,7 @@ class ExecOptions {
         }
 
         // Print command
-        execOutput.append(">>>>" + command)
+        execOutput.append(">>> " + command)
 
         // If timeout is defined, wait for it.
         // Otherwise, wait until output is done.

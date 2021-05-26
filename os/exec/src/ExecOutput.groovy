@@ -12,7 +12,7 @@ class ExecOutput implements Appendable {
 
         if (print)
             if (!charSequence.equals("\n") && charSequence.length() > 0)
-                logger.info(charSequence.toString())
+                logger.info("<<< " + charSequence.toString())
     }
 
     @Override
