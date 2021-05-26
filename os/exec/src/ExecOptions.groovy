@@ -42,8 +42,7 @@ class ExecOptions {
             execOutput = new ExecOutput(print: false)
         }
 
-        // Print command
-        execOutput.append(">>> " + command)
+        ExecOutput.logger.info(">>> " + command)
 
         // If timeout is defined, wait for it.
         // Otherwise, wait until output is done.
