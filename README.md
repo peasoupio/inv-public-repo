@@ -34,6 +34,7 @@ net/
 os/
     exec/  
     info/
+    pkg/
 tools/
     maven/
     docker/
