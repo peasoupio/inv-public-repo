@@ -38,11 +38,11 @@ inv {
         if (!pkgManager.verify()) {
             $logger.warn """Cannot use package manager ${pkgManager.name} properly. 
 Check if you have the sufficient privileges to use it or if it's installed."""
+        }
 
-            broadcast { PackageManager } using {
-                delayed true
-                ready { pkgManager }
-            }
+        broadcast { PackageManager } using {
+            delayed true
+            ready { pkgManager }
         }
     }
 }
