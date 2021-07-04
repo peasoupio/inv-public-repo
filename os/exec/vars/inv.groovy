@@ -6,7 +6,7 @@ inv {
     require { Logger }
 
     broadcast { Exec } using {
-        ready {
+        global {
 
             // Set de debug closure as the output console method
             ExecOutput.logger = $logger as $Logger

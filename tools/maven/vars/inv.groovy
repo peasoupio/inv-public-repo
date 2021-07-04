@@ -18,7 +18,6 @@ Exposes:
     analyze: Analyze the artifacts and dependencies for a specific folder.
 ```
 '''
-
-        ready { new SimpleMavenHandler(files: $files as $Files) }
+        dynamic { new SimpleMavenHandler(files: $files as $Files).analyze(caller.getPath()) }
     }
 }

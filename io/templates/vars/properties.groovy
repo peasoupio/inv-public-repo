@@ -4,6 +4,6 @@ inv {
     name "template"
 
     broadcast { PropertiesTemplate } using {
-        ready { return new PropertiesHelper({ debug(it) }) }
+        global { return new PropertiesHelper({ debug(it) }) }
     }
 }

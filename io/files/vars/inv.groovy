@@ -15,6 +15,6 @@ Methods:
     $files.find: Suitable for performances on generic file patterns
 ```
 '''
-        ready { new FilesHandler() }
+        global { new FilesHandler() }
     }
 }

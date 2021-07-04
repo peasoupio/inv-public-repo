@@ -7,7 +7,7 @@ inv {
     require { Exec }
 
     broadcast { Kubernetes(local: true) } using {
-        ready { return new LocalKubernetesHandler(exec: $exec as $Exec) }
+        global { return new LocalKubernetesHandler(exec: $exec as $Exec) }
     }
 
 }

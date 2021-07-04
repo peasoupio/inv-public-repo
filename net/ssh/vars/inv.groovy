@@ -12,26 +12,21 @@ It creates a new service per callee.
 
     broadcast { SSH } using {
         markdown '''
-Returns a new SSH handler.  
-
-Methods:
-     $: Default hook so it can provide a specific service for each callee individually.
+Returns a new SSH handler. 
 '''
+        delayed true
+        global {
+            def instance = [:]
 
-        ready {[
-            $: {
-                def instance = [:]
-
-                instance += [
+            instance += [
                     ssh: Ssh.newService(),
                     debugMode: {
                         instance.ssh.runtime.logback(level: 'DEBUG')
                     }
-                ]
+            ]
 
-                return instance
-            }
-        ]}
+            return instance
+        }
     }
 }
 

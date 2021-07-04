@@ -6,10 +6,6 @@ class SimpleMavenHandler {
 
     $Files files
 
-    Map $default() {
-        this.analyze(caller.getPath())
-    }
-
     Map analyze(String pwd, String exclude = "") {
 
         def poms = []

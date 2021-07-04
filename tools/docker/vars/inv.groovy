@@ -7,7 +7,7 @@ inv {
     require { Exec }
 
     broadcast { Docker(local: true) } using {
-        ready { return new LocalDockerHandler($exec as $Exec) }
+        global { return new LocalDockerHandler($exec as $Exec) }
     }
 
 }

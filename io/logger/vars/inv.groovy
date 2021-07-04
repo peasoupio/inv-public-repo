@@ -6,6 +6,6 @@ inv {
     LoggerImpl.console = { String message -> debug(message) }
 
     broadcast { Logger } using {
-        ready { new LoggerImpl() }
+        global { new LoggerImpl() }
     }
 }

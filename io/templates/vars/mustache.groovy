@@ -4,7 +4,7 @@ inv {
     name "mustacheTemplate"
 
     broadcast { MustacheTemplate } using {
-        ready { return new MustacheHelper({ debug(it) }) }
+        global { return new MustacheHelper({ debug(it) }) }
     }
 }
 
